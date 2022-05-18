@@ -9,13 +9,16 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/setup.cpp \
     src/main.cpp \
     src/login.cpp
 
 HEADERS += \
-    include/login.h
+    include/login.h \
+    include/setup.h
 
 FORMS += \
+    ui/setup.ui \
     ui/login.ui
 
 # Default rules for deployment.

@@ -120,6 +120,9 @@
      <property name="maxLength">
       <number>60</number>
      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
