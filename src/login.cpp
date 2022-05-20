@@ -29,6 +29,17 @@ Login::Login(QWidget *parent)
             qry.prepare("CREATE TABLE \"Users\" (\"username\"	TEXT NOT NULL UNIQUE, \"email\"	TEXT, \"password\"	TEXT, PRIMARY KEY(\"username\"));");
             if(!qry.exec())
                 QMessageBox::warning(this,"Error","Something went wrong!");
+
+            qry.prepare("CREATE TABLE \"Keepass\" (\
+                        \"Serial\"	INTEGER NOT NULL UNIQUE,\
+                        \"username\"	TEXT,\
+                        \"password\"	TEXT,\
+                        \"site\"	TEXT,\
+                        \"Description\"	TEXT,\
+                        PRIMARY KEY(\"Serial\" AUTOINCREMENT)\
+                    )");
+             if(!qry.exec())
+                QMessageBox::warning(this,"Error","Something went wrong!");
         }
 
     }
