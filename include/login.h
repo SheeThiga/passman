@@ -15,6 +15,11 @@ public:
     Login(QWidget *parent = nullptr);
     ~Login();
 
+private slots:
+    void on_pbGetStarted_clicked();
+
+    void on_pbOk_clicked();
+
 private:
     Ui::Login *ui;
 };

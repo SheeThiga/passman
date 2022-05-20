@@ -126,7 +126,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="confpwd">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -187,7 +187,8 @@
             <string>Quit</string>
            </property>
            <property name="icon">
-            <iconset theme="exit"/>
+            <iconset theme="exit">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
