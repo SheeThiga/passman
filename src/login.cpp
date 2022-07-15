@@ -9,6 +9,7 @@ Login::Login(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Login)
 {
+    //this->setWindowFlags(Qt::FramelessWindowHint);
     ui->setupUi(this);
 
     QFile fout("test.db");
@@ -80,5 +81,33 @@ void Login::on_pbOk_clicked()
 
     // append the details
 
-}
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("test.db");
+    QSqlQuery qry;
+    db.open();
 
+    if(!db.isOpen())
+    {
+        QMessageBox::warning(this,"Setup Error","Couldn't establish connection to database!");
+        return;
+    }
+
+    qry.prepare("INSERT INTO Users (username, email, password) VALUES (:uname, :email, :pwd)");
+    qry.bindValue(":uname", ui->uname->text());
+    qry.bindValue(":email", ui->email->text());
+    qry.bindValue(":pwd", ui->pwd->text());
+
+    if(qry.exec())
+    {
+        QMessageBox::information(this,"Success!","Your registration was sucessful");
+        db.commit();
+        db.close();
+        ui->stackedWidget->setCurrentIndex(1);
+        return;
+    }
+    else
+    {
+        QMessageBox::warning(this,"Error","Something went wrong while trying to register you!");
+    }
+
+}
