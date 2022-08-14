@@ -8,8 +8,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+#define FILENAME "user.bin"
+
+int main(int argc, char** argv)
 {
-    printf("Keeman coming soon!\n");
+    FILE* dataFile = fopen(FILENAME, "ab+");
+
+    if(dataFile == NULL)
+    {
+        perror("Error");
+        exit(2);    // could not open file
+    }
+
+    fclose(dataFile);
+
     return EXIT_SUCCESS;
 }
