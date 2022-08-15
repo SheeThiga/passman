@@ -8,7 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "include/user.h"
+
 #define FILENAME "user.bin"
+
 
 int main(int argc, char** argv)
 {
@@ -19,6 +22,10 @@ int main(int argc, char** argv)
         perror("Error");
         exit(2);    // could not open file
     }
+
+    User_t user;
+
+    register_user(&user, dataFile);
 
     fclose(dataFile);
 
